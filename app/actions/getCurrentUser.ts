@@ -21,11 +21,16 @@ export default async function getCurrentUser() {
             }
         })
 
-        console.log(currentUser);
+        // console.log(currentUser);
 
         if (!currentUser) return null;
 
-        return currentUser;
+        return {
+            ...currentUser,
+            createdAt: currentUser.createdAt.toISOString(),
+            updatedAt: currentUser.updatedAt.toISOString(),
+            emailVerified: currentUser.emailVerified?.toISOString() || null
+        };
     } catch (error: any) {
         console.log(error);
         return null;
