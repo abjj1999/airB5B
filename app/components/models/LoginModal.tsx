@@ -62,6 +62,11 @@ const LoginModal = () => {
         })
     };
 
+    const toggleModal = useCallback(() => {
+        loginModal.onClose();
+        RegisterModal.onOpen();
+    }, [loginModal, RegisterModal])
+
     const bodyContent = (
         <div className="flex flex-col gap-4">
             <Heading title="Welcome Back" subTitle="Login through your account" />
@@ -111,15 +116,15 @@ const LoginModal = () => {
               font-light
             "
           >
-            <p>Already have an account?{" "}
+            <p>First time using Air?{" "}
               <span 
-                onClick={RegisterModal.onClose}
+                onClick={toggleModal}
                 className="
                   text-neutral-800
                   cursor-pointer 
                   hover:underline
                 "
-                >Log in</span>
+                >Create an account</span>
             </p>
           </div>
         </div>
