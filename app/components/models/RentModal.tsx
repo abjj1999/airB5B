@@ -18,7 +18,7 @@ import Modal from "./Modal";
 import CategoryInput from '../inputs/CategoryInput';
 import CountrySelect from "../inputs/CountrySelect";
 import { categories } from '../navbar/Categories';
-// import ImageUpload from '../inputs/ImageUpload';
+import ImageUpload from '../inputs/ImageUpload';
 import Input from '../inputs/Input';
 import Heading from '../Heading';
 import Counter from '../inputs/Counter';
@@ -202,6 +202,22 @@ const RentModal = () => {
           />
       </div>
     )
+  }
+
+  if (step === STEPS.IMAGES) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Showcase your place"
+          subTitle="Show guests what your place looks like!"
+        />
+        <ImageUpload 
+          value={imageSrc}
+          onChange={(value) => setCustomValue('imageSrc', value)}
+        />
+      </div>
+    )
+
   }
 
   
