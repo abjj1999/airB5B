@@ -95,22 +95,22 @@ const RentModal = () => {
       return onNext();
     }
     
-    // setIsLoading(true);
+    setIsLoading(true);
 
-    // axios.post('/api/listings', data)
-    // .then(() => {
-    //   toast.success('Listing created!');
-    //   router.refresh();
-    //   reset();
-    //   setStep(STEPS.CATEGORY)
-    //   rentModal.onClose();
-    // })
-    // .catch(() => {
-    //   toast.error('Something went wrong.');
-    // })
-    // .finally(() => {
-    //   setIsLoading(false);
-    // })
+    axios.post('/api/listings', data)
+    .then(() => {
+      toast.success('Listing created!');
+      router.refresh();
+      reset();
+      setStep(STEPS.CATEGORY)
+      rentModal.onClose();
+    })
+    .catch(() => {
+      toast.error('Something went wrong.');
+    })
+    .finally(() => {
+      setIsLoading(false);
+    })
   }
 
   const actionLabel = useMemo(() => {
@@ -220,7 +220,55 @@ const RentModal = () => {
 
   }
 
-  
+  if (step === STEPS.DESCRIPTION) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="Describe your place"
+          subTitle="Tell guests what your place is like!"
+        />
+        <Input 
+          id="title"
+          label="Title"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+        <hr />
+        <Input
+          id="description"
+          label="Description"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+        />
+      </div>
+    )
+
+  }
+
+  if (step === STEPS.PRICE) {
+    bodyContent = (
+      <div className="flex flex-col gap-8">
+        <Heading
+          title="How much do you want to charge?"
+          subTitle="Set a price for your place!"
+        />
+        <Input 
+          id="price"
+          label="Price"
+          formatPrice
+          type="number"
+          disabled={isLoading}
+          register={register}
+          errors={errors}
+          required
+          />
+      </div>
+    )
+  }
 
   
   
