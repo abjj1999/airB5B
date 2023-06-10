@@ -32,7 +32,7 @@ const ListingHead: React.FC<ListingHeadProps> = ({
    <>
         <Heading
             title={title}
-            subTitle={`${location?.reigon} - ${location?.label}`}
+            subTitle={`${location?.region} - ${location?.label}`}
         />
         <div className="
             w-full
